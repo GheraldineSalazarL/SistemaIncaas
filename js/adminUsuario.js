@@ -93,7 +93,7 @@ const addUs = () =>{
             text: 'Nuevo usuario registrado con éxito',
             icon: 'success',
             showConfirmButton: false,
-            timer: 300,
+            timer: 3000,
         });
         // addNewListaUsuarios();
         // addDoc();
