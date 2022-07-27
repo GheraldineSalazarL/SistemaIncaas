@@ -173,8 +173,8 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="inputRolUs" class="form-label">Rol</label>
-                                            <select class="form-control" id="inputRolUs">
-                                                <option selected>Seleccione</option>
+                                            <select class="form-control" id="inputRolUs" required>
+                                                <option selected disabled value="">Seleccione</option>
                                                 <option value="Administrador">Administrador</option>
                                                 <option value="Docente">Docente</option>
                                                 <option value="Asesor">Asesor</option>
@@ -200,6 +200,9 @@
                                                 </span>
                                                 <span class="text">Nuevo Usuario</span>
                                             </button>
+                                        </div>
+                                        <div id="mensjFormUs" class="mensjFormUs p-2 text-left .text-danger">
+                                            
                                         </div>
                                 
                                         <!-- <button type="submit" id="btnModificarUs" class="btn btn-info btn-icon-split mt-2">
