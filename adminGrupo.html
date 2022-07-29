@@ -42,12 +42,12 @@
                 Administrar
             </div>
 
-            <li class="nav-item active">
+            <li class="nav-item ">
                 <a class="nav-link" href="adminUsuario.html">
                     <i class="fa-solid fa-user"></i>
                     <span>Usuarios</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="adminGrupo.html">
                     <i class=" fas fa-fw fa-wrench"></i>
                     <span> Grupos</span></a>
@@ -146,109 +146,54 @@
 
                 <!-- **********Contenido********** -->
                 <div class="container-fluid">
-
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Administrar Usuarios</h1>
-                        <div class="d-flex justify-content-end flex-wrap">
-                            <button type="submit" id="btnNuevoUser" class="btn btn-success btn-icon-split m-1">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                                <span class="text">Crear Nuevo Usuario</span>
-                            </button>
+                    <div class="container-fluid">
+                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                            <h1 class="h3 mb-0 text-gray-800">Administrar Grupos</h1>
+                            <div class="d-flex justify-content-end flex-wrap">
+                                <button type="submit" id="btnNuevoGrup" class="btn btn-success btn-icon-split m-1">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="text">Crear Nuevo Grupo</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div id="formularioUsers" class="col-xl-12 col-lg-12">
+                        <div id="" class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Crear Usuario</h6>
-                                </div>
-                                <div class="card-body col-md-8 m-auto">
+                                <div class="card-header col-md-12 m-auto">
                                     <form class="row g-3">
-                                        <div class="col-md-6">
-                                            <label for="inputUs" class="form-label">Usuario</label>
-                                            <input id="inputUs" type="text" class="form-control" required>
+                                        <div class="col-md-3">
+                                            <label for="inputCodGrup" class="form-label">Codigo</label>
+                                            <input id="inputCodGrup" type="text" class="form-control" required>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label for="inputRolUs" class="form-label">Rol</label>
-                                            <select class="form-control" id="inputRolUs" required>
+                                        <div class="col-md-4">
+                                            <label for="inputHorGrup" class="form-label">Horario</label>
+                                            <input id="inputHorGrup" type="text" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="inputDocGrup" class="form-label">Docente</label>
+                                            <select class="form-control" id="inputDocGrup" required>
                                                 <option selected disabled value="">Seleccione</option>
                                                 <option value="Administrador">Administrador</option>
                                                 <option value="Docente">Docente</option>
                                                 <option value="Asesor">Asesor</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-12">
-                                            <label for="inputNombreUs" class="form-label pt-2">Nombre Completo</label>
-                                            <input id="inputNombreUs" type="text" class="form-control" required>
+                                        <div class="col-md-1 justify-content-center align-self-center">
+                                            <a href="#" class="btn btn-success btn-circle mt-1">
+                                                <i class="fas fa-plus"></i>
+                                            </a>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label for="inputEmailUs" class="form-label pt-2">Email</label>
-                                            <input id="inputEmailUs" type="email" class="form-control">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputCelUs" class="form-label pt-2">Celular</label>
-                                            <input id="inputCelUs" type="cel" class="form-control">
-                                        </div>
-                                        
-                                        <div class="col-12">
-                                            <button type="submit" id="btnCrearUser" class="btn btn-success btn-icon-split mt-2">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                                <span class="text">Nuevo Usuario</span>
-                                            </button>
-                                        </div>
-                                        <div id="mensjFormUs" class="mensjFormUs p-2 text-left .text-danger">
-                                            
-                                        </div>
-                                
-                                        <!-- <button type="submit" id="btnModificarUs" class="btn btn-info btn-icon-split mt-2">
-                                            <span class="icon text-white-50">
-                                                <i class="fa-solid fa-pen"></i>
-                                            </span>
-                                            <span class="text">Modificar Usuario</span>
-                                        </button>
-                                        <p>*Si desea modificar un dato de un usuario, ingrese el usuario (ya existente) y en los siguientes campos ingrese los valores que desea cambiar.</p>
-                                        <div id="avisoNuevoUs" class="fs-4 text-success mt-2"> </div> -->
-            
-                                    
                                     </form>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-12 col-lg-12">
-                            <div class="card shadow mb-4">
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Lista de Usuarios</h6>
-                                </div>
-                                <div class="card-body">
-                                    <table class="table">
-                                        <thead>
-                                          <tr>
-                                            <th class="table-secondary" scope="col">#</th>
-                                            <th class="table-secondary" scope="col">Usuario</th>
-                                            <th class="table-secondary" scope="col">Nombre</th>
-                                            <th class="table-secondary" scope="col">Celular</th>
-                                            <th class="table-secondary" scope="col">Email</th>
-                                            <th class="table-secondary" scope="col">Rol</th>
-                                            <th class="table-secondary" scope="col">Grupos</th>
-                                            <th class="table-secondary" scope="col">Acción</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody id="tablaUs">
-
-                                        </tbody>
-                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
             </div>
 
             <!-- ************Footer********************* -->
@@ -272,7 +217,7 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="js/sb-admin-2.min.js"></script>
 
-    <script src="js/adminUsuario.js"></script>
+    <!-- <script src="js/adminUsuario.js"></script> -->
     
 </body>
 
