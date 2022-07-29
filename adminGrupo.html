@@ -146,18 +146,8 @@
 
                 <!-- **********Contenido********** -->
                 <div class="container-fluid">
-                    <div class="container-fluid">
-                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800">Administrar Grupos</h1>
-                            <div class="d-flex justify-content-end flex-wrap">
-                                <button type="submit" id="btnNuevoGrup" class="btn btn-success btn-icon-split m-1">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-check"></i>
-                                    </span>
-                                    <span class="text">Crear Nuevo Grupo</span>
-                                </button>
-                            </div>
-                        </div>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Administrar Grupos</h1>
                     </div>
 
                     <div class="row">
@@ -177,19 +167,26 @@
                                             <label for="inputDocGrup" class="form-label">Docente</label>
                                             <select class="form-control" id="inputDocGrup" required>
                                                 <option selected disabled value="">Seleccione</option>
-                                                <option value="Administrador">Administrador</option>
-                                                <option value="Docente">Docente</option>
-                                                <option value="Asesor">Asesor</option>
+                                                
                                             </select>
                                         </div>
                                         <div class="col-md-1 justify-content-center align-self-center">
-                                            <a href="#" class="btn btn-success btn-circle mt-1">
+                                            <a id="btnCrearGrup" class="btn btn-success btn-circle mt-2">
                                                 <i class="fas fa-plus"></i>
                                             </a>
                                         </div>
+                                        <div id="mensjFormGrup" class="mensjFormUs p-2 text-left .text-danger">
+                                
+                                        </div> 
                                     </form>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div >
+                        <div id="cardGrupos" class="d-flex justify-content-start flex-wrap">
+                            
                         </div>
                     </div>
                 </div>
@@ -217,7 +214,8 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- <script src="js/adminUsuario.js"></script> -->
+    <script src="js/adminGrupo.js"></script>
+
     
 </body>
 

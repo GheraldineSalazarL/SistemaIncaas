@@ -101,7 +101,7 @@ const addUs = () =>{
             timer: 3000,
         });
         addNewListaUsuarios();
-        // addDoc();
+        addDoc();
         // inicialize();
     }
 }
