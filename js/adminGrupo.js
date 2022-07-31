@@ -16,10 +16,17 @@ let inputHorGrup=document.getElementById('inputHorGrup');
 let inputDocGrup=document.getElementById('inputDocGrup');
 let mensjFormGrup = document.getElementById("mensjFormGrup");
 
+let inputHorGrupM=document.getElementById('inputHorGrupM');
+let inputDocGrupM=document.getElementById('inputDocGrupM');
+
+let codGrupM = document.getElementById("codGrupM");
+let btnModifGrup = document.getElementById("btnModifGrup");
+
 // Agregar docentes al DOM 
 let docentes = JSON.parse(localStorage.getItem("docentes")) || [];
 
 inputDocGrup.innerHTML = "";
+inputDocGrupM.innerHTML = "";
 let option;
   
 docentes.forEach((element,i) => {
@@ -28,6 +35,7 @@ docentes.forEach((element,i) => {
     
     option.innerHTML = `${element.nombre}`;
     inputDocGrup.appendChild(option);
+    inputDocGrupM.appendChild(option);
 });
 
 //  Nuevo gupo
@@ -93,6 +101,8 @@ const resetInputsgrup = () =>{
     inputCodGrup.value ="";
     inputHorGrup.value ="";
     inputDocGrup.value ="";
+    inputHorGrupM.value ="";
+    inputDocGrupM.value ="";
 }
 
 // Mostrar grupos creados
@@ -119,10 +129,10 @@ const addNewGrupo = () => {
                                         </div>
                                     </div>
                                     <div class="row justify-content-end">
-                                        <a class="btn btn-warning btn-circle btn-sm mr-1" onClick="modificarClickGrup(${i})">
+                                        <a class="btn btn-warning btn-circle btn-sm mr-1" onClick="modificarClickGrup(${i})" href="#formularioModifGrup">
                                             <i class="fas fa-pen"></i>
                                         </a>
-                                        <a class="btn btn-danger btn-circle btn-sm mr-1" onClick="deleteClickGrup(${i})">
+                                        <a class="btn btn-danger btn-circle btn-sm mr-1"  onClick="deleteClickGrup(${i})">
                                         <i class="fas fa-trash"></i>
                                         </a>
                                     </div>
@@ -142,63 +152,49 @@ deleteClickGrup = (index) =>{
     addNewGrupo(); 
 }
 
-// Modificar grupo 
+// Modificar grupo
+formularioModifGrup.className = 'oculto';
+let section = true;
 modificarClickGrup = (i) =>{
-    codGrupoModif = grupos.slice(i,i+1);
-    console.log(codGrupoModif);
-    codGrupoModifCodigo=codGrupoModif[0].codGrupo;
-    console.log(codGrupoModifCodigo);
- 
-    Swal.fire({
-        title: 'Modificar Grupo',
-        html: `<div class="card-body col-md-12 m-auto card shadow">
-            <form class="col-md-12 text-left row g-3">
-                    <div class="col-md-4">
-                        <label class="col-md-12 pl-0 ">Código</label>
-                        <input type="text" class="form-control" value="${codGrupoModifCodigo}" disabled>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="inputHorGrupM" class="form-label">Horario</label>
-                        <input id="inputHorGrupM" type="text" class="form-control" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="inputDocGrupM" class="form-label">Docente</label>
-                        <select class="form-control" id="inputDocGrupM" required>
-                            <option selected disabled value="">Seleccione</option>
-                            <option value="Administrador">Administrador</option>
-                            <option value="Docente">Docente</option>
-                            <option value="Asesor">Asesor</option>
-                        </select>
-                    </div>
-                </form>
-            </div>`,
-            confirmButtonText: 'Modificar Grupo',
-            focusConfirm: false,
-            preConfirm:() => {
-                const horGrupM = Swal.getPopup().querySelector('#inputHorGrupM').value
-                const docGrupM = Swal.getPopup().querySelector('#inputDocGrupM').value
-                return{horGrupM:horGrupM, docGrupM:docGrupM}
-            }
-        }).then((result) => {
-            if(result.isConfirmed){
-                const buscado = grupos.find(grupoBus=>grupoBus.codGrupo===codGrupoModifCodigo);
-                if (buscado){
-                    if(result.value.horGrupM !== ''){buscado.horGrupo = result.value.horGrupM;}
-                    if(result.value.docGrupM !== ''){buscado.docGrupo = result.value.docGrupM;}
-        
-                    localStorage.setItem("grupos",JSON.stringify(grupos));
-                    addNewGrupo();
-                    resetInputsgrup();
-                    Swal.fire({
-                        title: 'Bien hecho!',
-                        text: 'Grupo modificado con éxito',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 2500
-                    });
-                }
-            }
-            
-        })
-}
+    const manageSection = ()=>{
+        section = !section;
+        switch (section) {
+            case true:
+                formularioModifGrup.className = 'oculto';
+                break;
+            case false:
+                formularioModifGrup.className = 'visible';
+                break;
+        }
+    }
+    manageSection();
 
+    codGrupM.innerHTML ="";
+    codGrupoModif = grupos.slice(i,i+1);
+    codGrupoModifCodigo=codGrupoModif[0].codGrupo;
+    codGrupM.setAttribute("value",`${codGrupoModifCodigo}`);
+
+    btnModifGrup.onclick = (e) =>{
+        e.preventDefault();
+    
+        let horGrupM = inputHorGrupM.value;
+        let docGrupM = inputDocGrupM.value;
+    
+        const buscadoGrup = grupos.find(grupoBus=>grupoBus.codGrupo===codGrupoModifCodigo);
+        if (buscadoGrup){
+            if(horGrupM !== ''){buscadoGrup.horGrupo = horGrupM;}
+            if(docGrupM !== ''){buscadoGrup.docGrupo = docGrupM;}
+    
+            localStorage.setItem("grupos",JSON.stringify(grupos));
+            addNewGrupo();
+            resetInputsgrup();
+            Swal.fire({
+                title: 'Bien hecho!',
+                text: 'Grupo modificado con éxito',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2500
+            });
+        }
+    }
+}
