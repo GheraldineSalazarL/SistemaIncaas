@@ -16,6 +16,20 @@ let inputHorGrup=document.getElementById('inputHorGrup');
 let inputDocGrup=document.getElementById('inputDocGrup');
 let mensjFormGrup = document.getElementById("mensjFormGrup");
 
+// Agregar docentes al DOM 
+let docentes = JSON.parse(localStorage.getItem("docentes")) || [];
+
+inputDocGrup.innerHTML = "";
+let option;
+  
+docentes.forEach((element,i) => {
+    option = document.createElement('option');
+    option.setAttribute("value",`${element.nombre}`);
+    
+    option.innerHTML = `${element.nombre}`;
+    inputDocGrup.appendChild(option);
+});
+
 //  Nuevo gupo
 let grupos = JSON.parse(localStorage.getItem("grupos")) || [];
 
@@ -62,8 +76,6 @@ const addGrup = () =>{
         grupos.push(nuevoGrupo);
         localStorage.setItem("grupos", JSON.stringify(grupos));
         resetInputsgrup();
-        // avisoNuevoGrup.innerHTML = "Nuevo grupo registrado con éxito";
-        // setTimeout(() => {avisoNuevoGrup.innerHTML = ""}, 3000);
         Swal.fire({
             title: 'Bien hecho!',
             text: 'Nuevo grupo registrado con éxito',
@@ -190,17 +202,3 @@ modificarClickGrup = (i) =>{
         })
 }
 
-// Lista de docentes 
-const addDoc = () => {
-    inputDocGrup.innerHTML = "";
-    let option;
-    let filtrado = usuarios.filter(usuarioFil=>usuarioFil.rol==="Docente");
-    filtrado.forEach((element,i) => {
-        option = document.createElement('option');
-        option.setAttribute("value",`${element.nombre}`);
-        console.log(option.value);
-        option.innerHTML = `${element.nombre}`;
-        opcionDoc.appendChild(option);
-        console.log(option);
-    });
-}

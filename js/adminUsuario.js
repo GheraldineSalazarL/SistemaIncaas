@@ -11,6 +11,8 @@
 
 //  Elementos 
 let btnNuevoUser = document.getElementById("btnNuevoUser");
+let formularioUsers=document.getElementById('formularioUsers');
+
 
 let inputUs=document.getElementById('inputUs');
 let inputRolUs=document.getElementById('inputRolUs');
@@ -20,11 +22,12 @@ let inputCelUs=document.getElementById('inputCelUs');
 let btnCrearUser = document.getElementById("btnCrearUser");
 let mensjFormUs = document.getElementById("mensjFormUs");
 
+let tablaUs = document.getElementById("tablaUs");
+
 let inputRolUsM=document.getElementById('inputRolUsM');
 let inputNombreUsM=document.getElementById('inputNombreUsM');
 let inputEmailUsM=document.getElementById('inputEmailUsM');
 let inputCelUsM=document.getElementById('inputCelUsM');
-
 
 //  Boton Desplegar formulario de nuevo usuario
 let section = true;
@@ -91,7 +94,11 @@ const addUs = () =>{
         let nuevoUsuario = new listaUsuarios(usuario,rol,nombre,email,cel);
         usuarios.push(nuevoUsuario);
         localStorage.setItem("usuarios", JSON.stringify(usuarios));
-        
+
+        let docentes = JSON.parse(localStorage.getItem("docentes")) || [];
+        let filtradoDocentes = usuarios.filter(usuarioFil=>usuarioFil.rol==="Docente");
+        localStorage.setItem("docentes", JSON.stringify(filtradoDocentes));
+       
         resetInputs();
         Swal.fire({
             title: 'Bien hecho!',
@@ -101,7 +108,7 @@ const addUs = () =>{
             timer: 3000,
         });
         addNewListaUsuarios();
-        addDoc();
+        // addDoc();
         // inicialize();
     }
 }
@@ -154,8 +161,8 @@ deleteClick = (index) =>{
 
 // Modificar usuario
 modificarClick = (i) =>{
-    userModif = usuarios.slice(i,i+1);
-    userModifUsuario=userModif[0].usuario;
+    let userModif = usuarios.slice(i,i+1);
+    let userModifUsuario=userModif[0].usuario;
  
     Swal.fire({
         title: 'Modificar Usuario',
@@ -197,29 +204,29 @@ modificarClick = (i) =>{
                 const celM = Swal.getPopup().querySelector('#inputCelUsM').value
                 return{rolM:rolM, nombreM:nombreM, emailM:emailM, celM:celM}
             }
-        }).then((result) => {
-            if(result.isConfirmed){
-                const buscado = usuarios.find(usuarioBus=>usuarioBus.usuario===userModifUsuario);
-                if (buscado){
-                    if(result.value.rolM !== "Seleccione" && result.value.rolM !== ''){buscado.rol = result.value.rolM;}
-                    if(result.value.nombreM !== ''){buscado.nombre = result.value.nombreM;}
-                    if(result.value.emailM !== ''){buscado.email = result.value.emailM;}
-                    if(result.value.celM !== ''){buscado.cel = result.value.celM;}
-        
-                    localStorage.setItem("usuarios",JSON.stringify(usuarios));
-                    addNewListaUsuarios();
-                    resetInputs();
-                    Swal.fire({
-                        title: 'Bien hecho!',
-                        text: 'Usuario modificado con éxito',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 2500
-                    });
-                }
+    }).then((result) => {
+        if(result.isConfirmed){
+            const buscado = usuarios.find(usuarioBus=>usuarioBus.usuario===userModifUsuario);
+            if (buscado){
+                if(result.value.rolM !== "Seleccione" && result.value.rolM !== ''){buscado.rol = result.value.rolM}
+                if(result.value.nombreM !== ''){buscado.nombre = result.value.nombreM}
+                if(result.value.emailM !== ''){buscado.email = result.value.emailM}
+                if(result.value.celM !== ''){buscado.cel = result.value.celM}
+    
+                localStorage.setItem("usuarios",JSON.stringify(usuarios));
+                addNewListaUsuarios();
+                resetInputs();
+                Swal.fire({
+                    title: 'Bien hecho!',
+                    text: 'Usuario modificado con éxito',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 2500
+                });
             }
-            
-        })
+        }
+        
+    })
 }
 
 
