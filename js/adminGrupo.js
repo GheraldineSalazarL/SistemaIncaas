@@ -35,6 +35,13 @@ docentes.forEach((element,i) => {
     
     option.innerHTML = `${element.nombre}`;
     inputDocGrup.appendChild(option);
+    console.log(option);
+});
+docentes.forEach((element,i) => {
+    option = document.createElement('option');
+    option.setAttribute("value",`${element.nombre}`);
+    
+    option.innerHTML = `${element.nombre}`;
     inputDocGrupM.appendChild(option);
 });
 

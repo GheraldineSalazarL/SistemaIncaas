@@ -47,6 +47,8 @@ btnNuevoUser.onclick = manageSection;
 
 // Crear usuarios y agregarlo a Storage
 let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+let docentes = JSON.parse(localStorage.getItem("docentes")) || [];
+
 
 btnCrearUser.onclick = (e) =>{
     e.preventDefault(); 
@@ -95,7 +97,6 @@ const addUs = () =>{
         usuarios.push(nuevoUsuario);
         localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
-        let docentes = JSON.parse(localStorage.getItem("docentes")) || [];
         let filtradoDocentes = usuarios.filter(usuarioFil=>usuarioFil.rol==="Docente");
         localStorage.setItem("docentes", JSON.stringify(filtradoDocentes));
        
@@ -108,7 +109,6 @@ const addUs = () =>{
             timer: 3000,
         });
         addNewListaUsuarios();
-        // addDoc();
         // inicialize();
     }
 }
@@ -153,8 +153,12 @@ usuarios.length > 0 && addNewListaUsuarios();
 
 // Eliminar usuario
 deleteClick = (index) =>{
+    let us=usuarios[index].usuario;    
+    let posDoc = docentes.findIndex(x => x.usuario === us);
+    let deleteddoc = docentes.splice(posDoc,1);
     let deletedUs = usuarios.splice(index, 1); 
     localStorage.setItem("usuarios",JSON.stringify(usuarios));
+    localStorage.setItem("docentes",JSON.stringify(docentes));
     addNewListaUsuarios(); 
     // inicialize(); // actualiza los elementos del Dashboard
 }

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/461bbe17d9.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+    <title>Sistema Incaas</title>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <!-- **********Sidebar********** -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i> 
+                </div>
+                <div class="sidebar-brand-text mx-3">INCAAS</div>
+            </a>
+
+            <hr class="sidebar-divider m-2">
+
+            <li class="nav-item ">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <hr class="sidebar-divider m-2">
+
+            <div class="sidebar-heading">
+                Administrar
+            </div>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="adminUsuario.html">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Usuarios</span></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="adminGrupo.html">
+                    <i class=" fas fa-fw fa-wrench"></i>
+                    <span> Grupos</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="adminEstudiante.html">
+                    <i class=" fa-solid fa-pen"></i>
+                    <span> Estudiantes</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="adminValReport.html">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span> Valor Reporte</span></a>
+            </li>
+
+            <hr class="sidebar-divider m-2">
+
+            <div class="sidebar-heading">
+                Formatos
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="charts.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Formato General</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="charts.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Tarjetas de Control</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="tables.html">
+                    <i class="fa-solid fa-file"></i>
+                    <span>Formulario de inscripción</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="tables.html">
+                    <i class="fa-solid fa-address-card"></i>
+                    <span>Carnets</span></a>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block m-2">
+
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+
+        <!-- **********Zona Derecha********** -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <div id="content">
+
+                <!-- **********Navbar********** -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar"
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            
+                        </li>
+                        
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile_3.svg">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- **********Contenido********** -->
+                <div class="container-fluid">
+                    
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Administrar Estudiantes</h1>
+                    </div>
+                    
+                    <ul class="nav nav-tabs" id="solapaGrupo">
+                        <!-- <li class="nav-item">
+                          <a class="nav-link font-weight-bold" href="#">Grupo</a>
+                        </li> -->
+                    </ul>
+
+                    <div id="infoGrupos">
+                        <!--     
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Lista de Estudiantes</h6>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="table-secondary" scope="col">Código</th>
+                                            <th class="table-secondary" scope="col">Nombre</th>
+                                            <th class="table-secondary" scope="col">Identificación</th>
+                                            <th class="table-secondary" scope="col">Fecha Ingreso</th>
+                                            <th class="table-secondary" scope="col">Celular</th>
+                                            <th class="table-secondary" scope="col">Estado</th>
+                                            <th class="table-secondary" scope="col">Acción</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tablaEst">
+    
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end flex-wrap">
+                                <button type="submit" id="btnNuevoEst" class="btn btn-success btn-icon-split m-1">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="text">Crear Nuevo Estudiante</span>
+                                </button>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <div class="row">
+                        <div id="formularioEstudiante" class="col-xl-10 col-lg-10 m-auto">
+                            <div class="card shadow mb-4 ">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Crear Estudiante</h6>
+                                </div>
+                                <div class="card-body col-md-10 m-auto">
+                                    <form class="col-md-12 text-left row g-3">
+                                        <div class="col-md-3">
+                                            <label for="inputCodEst" class="form-label pt-2">Código </label>
+                                            <input id="inputCodEst" type="text" class="form-control" required>
+                                        </div>  
+                                        <div class="col-md-9">
+                                            <label for="inputNombreEst" class="form-label pt-2">Nombre Completo</label>
+                                            <input id="inputNombreEst" type="text" class="form-control" required>
+                                        </div> 
+                                        <div class="col-md-4">
+                                            <label for="inputIdEst" class="form-label pt-2">Identificación</label>
+                                            <input id="inputIdEst" type="text" class="form-control" required>
+                                        </div> 
+                                        <div class="col-md-4">
+                                            <label for="inputFinEst" class="form-label pt-2">Fecha de ingreso</label>
+                                            <input id="inputFinEst" type="date" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="inputCelEst" class="form-label pt-2">Celular</label>
+                                            <input id="inputCelEst" type="text" class="form-control" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" id="btnCrearEst" class="btn btn-success btn-icon-split mt-2">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-check"></i>
+                                                </span>
+                                                <span class="text">Crear Estudiante</span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+            <!-- ************Footer********************* -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; INCAAS 2022</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <script src="js/adminEstudiante.js"></script>
+
+    
+</body>
+
+</html>
