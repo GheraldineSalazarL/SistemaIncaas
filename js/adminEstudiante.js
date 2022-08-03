@@ -46,72 +46,8 @@ const addNewSolapaGrupo = () => {
 }
 grupos.length > 0 && addNewSolapaGrupo(); 
 
-// show_data.onclick = () => {
-//     getData().then(response => {
-//         response.forEach(element => {
-//         let listado = document.getElementById('tablaEst');
-//         fetch('data/data.json')
-//         .then((res) => res.json())
-//         .then(data => {
-//             data.forEach((data)=>{
-//                 let tr = document.createElement('tr');        
-//                 tr.innerHTML = `<td>${data.codEst}</td>
-//                                 <td>${data.nombreEst}</td>
-//                                 <td>${data.idEst}</td>
-//                                 <td>${data.finEst}</td>
-//                                 <td>${data.celEst}</td>
-//                                 <td>${data.estadoEst}</td>
-//                                 <td></td>
-//                                 <td></td>`;     
-//                 listado.appendChild(tr);
-//             });
-//         });
-
-//         });
-       
-//     })
-
-// }
-
-const getData = () => {
-    let loader = document.getElementById('loader');
-    loader.className = 'loader-show';
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            loader.className = 'loader-hide';
-            resolve(data)
-        }, 5000)
-    })     
-}
-
 // Mostrar info grupos
 mostrarClickGrup = (i) =>{
-    getData().then(response => {
-        response.forEach(element => {
-            let listado = document.getElementById('tablaEst');
-            fetch('data/data.json')
-            .then((res) => res.json())
-            .then(data => {
-                data.forEach((data)=>{
-                    let tr = document.createElement('tr');        
-                    tr.innerHTML = `<td>${data.codEst}</td>
-                                    <td>${data.nombreEst}</td>
-                                    <td>${data.idEst}</td>
-                                    <td>${data.finEst}</td>
-                                    <td>${data.celEst}</td>
-                                    <td>${data.estadoEst}</td>
-                                    <td></td>
-                                    <td></td>`;     
-                    listado.appendChild(tr);
-                });
-            }).catch(error => {
-                reject(error);
-            })
-
-        });
-       
-    })
-
     grupoSelectCod=grupos[i].codGrupo;
     
     infoGrupos.innerHTML = "";
@@ -316,7 +252,7 @@ mostrarClickGrup = (i) =>{
             
         })
     }
-    // cargarEstudiantes();
+    cargarEstudiantes();
 }
 
 //  Boton Desplegar formulario de nuevo Estudiantes
@@ -344,25 +280,60 @@ const resetInputsEst = () =>{
 }
 
 // Fetch 
-// function cargarEstudiantes(){
-    // let listado = document.getElementById('tablaEst');
-    // fetch('data/data.json')
-    // .then((res) => res.json())
-    // .then(data => {
-    //     data.forEach((data)=>{
-    //         let tr = document.createElement('tr');        
-    //         tr.innerHTML = `<td>${data.codEst}</td>
-    //                         <td>${data.nombreEst}</td>
-    //                         <td>${data.idEst}</td>
-    //                         <td>${data.finEst}</td>
-    //                         <td>${data.celEst}</td>
-    //                         <td>${data.estadoEst}</td>
-    //                         <td></td>
-    //                         <td></td>`;     
-    //         listado.appendChild(tr);
-    //     });
-    // });
+function cargarEstudiantes(){
+    let listado = document.getElementById('tablaEst');
+    fetch('data/data.json')
+    .then((res) => res.json())
+    .then(data => {
+        data.forEach((data)=>{
+            let tr = document.createElement('tr');        
+            tr.innerHTML = `<td>${data.codEst}</td>
+                            <td>${data.nombreEst}</td>
+                            <td>${data.idEst}</td>
+                            <td>${data.finEst}</td>
+                            <td>${data.celEst}</td>
+                            <td>${data.estadoEst}</td>
+                            <td></td>
+                            <td></td>`;     
+            listado.appendChild(tr);
+        });
+    });
+}
+
+
+
+// const getData = () => {
+//     let loader = document.getElementById('loader');
+//     loader.className = 'loader-show';
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             loader.className = 'loader-hide';
+//             resolve(data)
+//         }, 5000)
+//     })     
 // }
+// getData().then(response => {
+//     response.forEach(element => {
+//         let listado = document.getElementById('tablaEst');
+//         fetch('data/data.json')
+//         .then((res) => res.json())
+//         .then(data => {
+//             data.forEach((data)=>{
+//                 let tr = document.createElement('tr');        
+//                 tr.innerHTML = `<td>${data.codEst}</td>
+//                                 <td>${data.nombreEst}</td>
+//                                 <td>${data.idEst}</td>
+//                                 <td>${data.finEst}</td>
+//                                 <td>${data.celEst}</td>
+//                                 <td>${data.estadoEst}</td>
+//                                 <td></td>
+//                                 <td></td>`;     
+//                 listado.appendChild(tr);
+//             });
+//         }).catch(error => {
+//             reject(error);
+//         })
 
-
-
+//     });
+   
+// })
