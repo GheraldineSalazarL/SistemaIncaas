@@ -151,49 +151,14 @@
                         <h1 class="h3 mb-0 text-gray-800">Administrar Estudiantes</h1>
                     </div>
                     
-                    <ul class="nav nav-tabs" id="solapaGrupo">
-                        <!-- <li class="nav-item">
-                          <a class="nav-link font-weight-bold" href="#">Grupo</a>
-                        </li> -->
-                    </ul>
+                    <!-- <div id="solapaGrupo"> -->
+                        <ul class="nav nav-tabs" id="solapaGrupo">
+                            
+                        </ul>
+                    <!-- </div> -->
 
                     <div id="infoGrupos">
-                        <!--     
-                        <div class="col-xl-12 col-lg-12">
-                            <div class="card shadow mb-4">
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Lista de Estudiantes</h6>
-                                </div>
-                                <div class="card-body">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th class="table-secondary" scope="col">Código</th>
-                                            <th class="table-secondary" scope="col">Nombre</th>
-                                            <th class="table-secondary" scope="col">Identificación</th>
-                                            <th class="table-secondary" scope="col">Fecha Ingreso</th>
-                                            <th class="table-secondary" scope="col">Celular</th>
-                                            <th class="table-secondary" scope="col">Estado</th>
-                                            <th class="table-secondary" scope="col">Acción</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="tablaEst">
-    
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <div class="d-flex justify-content-end flex-wrap">
-                                <button type="submit" id="btnNuevoEst" class="btn btn-success btn-icon-split m-1">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-check"></i>
-                                    </span>
-                                    <span class="text">Crear Nuevo Estudiante</span>
-                                </button>
-                            </div>
-                        </div> -->
+                                                
                     </div>
 
                     <div class="row">
@@ -237,6 +202,25 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="container">
+                        <div class="loader-hide" id="loader" style="text-align: center;">
+                          <div class="preloader-wrapper big active">
+                            <div class="spinner-layer spinner-blue-only">
+                              <div class="circle-clipper left">
+                                <div class="circle"></div>
+                              </div><div class="gap-patch">
+                                <div class="circle"></div>
+                              </div><div class="circle-clipper right">
+                                <div class="circle"></div>
+                              </div>
+                            </div>
+                        </div>
+                     </div>
+
+                    <div id="infoGrupos2">
+
+                    </div>
                     
                 </div>
                 
@@ -263,9 +247,9 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="js/sb-admin-2.min.js"></script>
 
-    <script src="js/adminEstudiante.js"></script>
+    <script src="data/data.js"></script>
+    <script src="js/adminEstudiante.js"></script>    
 
-    
 </body>
 
 </html>

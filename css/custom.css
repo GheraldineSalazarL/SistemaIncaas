@@ -9,3 +9,25 @@
 .mensjFormUs{
     color: rgba(255, 0, 0, 0.658);
 }
+
+.icon-block {
+    padding: 0 15px;
+  }
+  .icon-block .material-icons {
+      font-size: inherit;
+  }
+
+  .button-align{
+      text-align: center;
+  }
+
+  .margin-right{
+    margin-right: 3%;
+}
+
+.loader-hide{
+    display: none;
+}
+.loader-show{
+    display: block;
+}
