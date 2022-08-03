@@ -252,7 +252,25 @@ mostrarClickGrup = (i) =>{
             
         })
     }
-    cargarEstudiantes();
+
+    // Promesa con Fetch (1/2) 
+    let listado = document.getElementById('tablaEst');
+    getData().then((response) =>{
+        console.log(getData());
+        loader.className = 'loader-hide';
+        response.forEach(element => {
+            let tr = document.createElement('tr');        
+                tr.innerHTML = `<td>${element.codEst}</td>
+                                <td>${element.nombreEst}</td>
+                                <td>${element.idEst}</td>
+                                <td>${element.finEst}</td>
+                                <td>${element.celEst}</td>
+                                <td>${element.estadoEst}</td>
+                                <td></td>
+                                <td></td>`;     
+                listado.appendChild(tr);
+        });
+    });
 }
 
 //  Boton Desplegar formulario de nuevo Estudiantes
@@ -279,86 +297,10 @@ const resetInputsEst = () =>{
     inputCelEst.value ="";
 }
 
-// Fetch 
-// function cargarEstudiantes(){
-//     let listado = document.getElementById('tablaEst');
-//     fetch('data/data.json')
-//     .then((res) => res.json())
-//     .then(data => {
-//         data.forEach((data)=>{
-//             let tr = document.createElement('tr');        
-//             tr.innerHTML = `<td>${data.codEst}</td>
-//                             <td>${data.nombreEst}</td>
-//                             <td>${data.idEst}</td>
-//                             <td>${data.finEst}</td>
-//                             <td>${data.celEst}</td>
-//                             <td>${data.estadoEst}</td>
-//                             <td></td>
-//                             <td></td>`;     
-//             listado.appendChild(tr);
-//         });
-//     });
-// }
-
-
-
-// const getData = () => {
-//     let loader = document.getElementById('loader');
-//     loader.className = 'loader-show';
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             loader.className = 'loader-hide';
-//             resolve(data)
-//         }, 5000)
-//     })     
-// }
-// getData().then(response => {
-//     response.forEach(element => {
-//         let listado = document.getElementById('tablaEst');
-//         fetch('data/data.json')
-//         .then((res) => res.json())
-//         .then(data => {
-//             data.forEach((data)=>{
-//                 let tr = document.createElement('tr');        
-//                 tr.innerHTML = `<td>${data.codEst}</td>
-//                                 <td>${data.nombreEst}</td>
-//                                 <td>${data.idEst}</td>
-//                                 <td>${data.finEst}</td>
-//                                 <td>${data.celEst}</td>
-//                                 <td>${data.estadoEst}</td>
-//                                 <td></td>
-//                                 <td></td>`;     
-//                 listado.appendChild(tr);
-//             });
-//         }).catch(error => {
-//             reject(error);
-//         })
-
-//     });
-   
-// })
-function cargarEstudiantes(){
-    let listado = document.getElementById('tablaEst');
-    getData().then((response) =>{
-        console.log(getData());
-        loader.className = 'loader-hide';
-        response.forEach(element => {
-            let tr = document.createElement('tr');        
-                tr.innerHTML = `<td>${element.codEst}</td>
-                                <td>${element.nombreEst}</td>
-                                <td>${element.idEst}</td>
-                                <td>${element.finEst}</td>
-                                <td>${element.celEst}</td>
-                                <td>${element.estadoEst}</td>
-                                <td></td>
-                                <td></td>`;     
-                listado.appendChild(tr);
-        });
-    });
-}
+// Promesa con Fetch (2/2)
 const getData = ()=>{
     let loader = document.getElementById('loader');
-    loader.className = 'loader-show';
+    loader.className = 'loader-show text-primary';
     return new Promise((resolve,reject)=>{
         setTimeout(() => {
             fetch('data/data.json')
