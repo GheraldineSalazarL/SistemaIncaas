@@ -280,25 +280,25 @@ const resetInputsEst = () =>{
 }
 
 // Fetch 
-function cargarEstudiantes(){
-    let listado = document.getElementById('tablaEst');
-    fetch('data/data.json')
-    .then((res) => res.json())
-    .then(data => {
-        data.forEach((data)=>{
-            let tr = document.createElement('tr');        
-            tr.innerHTML = `<td>${data.codEst}</td>
-                            <td>${data.nombreEst}</td>
-                            <td>${data.idEst}</td>
-                            <td>${data.finEst}</td>
-                            <td>${data.celEst}</td>
-                            <td>${data.estadoEst}</td>
-                            <td></td>
-                            <td></td>`;     
-            listado.appendChild(tr);
-        });
-    });
-}
+// function cargarEstudiantes(){
+//     let listado = document.getElementById('tablaEst');
+//     fetch('data/data.json')
+//     .then((res) => res.json())
+//     .then(data => {
+//         data.forEach((data)=>{
+//             let tr = document.createElement('tr');        
+//             tr.innerHTML = `<td>${data.codEst}</td>
+//                             <td>${data.nombreEst}</td>
+//                             <td>${data.idEst}</td>
+//                             <td>${data.finEst}</td>
+//                             <td>${data.celEst}</td>
+//                             <td>${data.estadoEst}</td>
+//                             <td></td>
+//                             <td></td>`;     
+//             listado.appendChild(tr);
+//         });
+//     });
+// }
 
 
 
@@ -337,3 +337,39 @@ function cargarEstudiantes(){
 //     });
    
 // })
+function cargarEstudiantes(){
+    let listado = document.getElementById('tablaEst');
+    getData().then((response) =>{
+        console.log(getData());
+        loader.className = 'loader-hide';
+        response.forEach(element => {
+            let tr = document.createElement('tr');        
+                tr.innerHTML = `<td>${element.codEst}</td>
+                                <td>${element.nombreEst}</td>
+                                <td>${element.idEst}</td>
+                                <td>${element.finEst}</td>
+                                <td>${element.celEst}</td>
+                                <td>${element.estadoEst}</td>
+                                <td></td>
+                                <td></td>`;     
+                listado.appendChild(tr);
+        });
+    });
+}
+const getData = ()=>{
+    let loader = document.getElementById('loader');
+    loader.className = 'loader-show';
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            fetch('data/data.json')
+            .then(response => response.json())
+            .then(data => {
+                resolve(data); 
+            })
+            .catch(error => {
+                reject(error);
+            })
+        }, 4000)
+    }
+    );
+}
